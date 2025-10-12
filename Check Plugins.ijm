@@ -1,7 +1,7 @@
 // **INFO** //
 // Version: 09/2025
 // Not well tested, should alert if any dependent plugins are absent
-// Author: AI mostly, quickly whipped together + some work from Ted Aplin
+// Author: AI mostly, quickly whipped together + some work from Ted (Edward) Aplin
 
 // List of important plugin filenames to check
 plugins = newArray(

@@ -1,9 +1,9 @@
 // **INFO** //
 // version: 09/2025
 // loops through multi-series files in a directory and saves each serie as a separate tif file
-// author: Ted Aplin
+// author: Ted (Edward) Aplin
 
-// Example annotation with persistence off
+// GUI input
 #@ String (value="This macro converts proprietary formats into TIFF files using the Bio-Formats Plugin", visibility="MESSAGE", required=false, persist=false) hint1
 #@ String (value="Requires at least enough RAM to open one slice/frame", visibility="MESSAGE", required=false, persist=false) hint2
 #@ String (value="Author Edward (Ted) Aplin", visibility="MESSAGE", required=false, persist=false) hint3
@@ -69,17 +69,18 @@ for (b = 0; b < fileList.length; b++) { // for each file in the list of relevant
 
 		//renaming title
 		title = getTitle();
-		if (seriesCount == 1) { // if only one file then change extension
+		
+		// if only one file then change extension
+		if (seriesCount == 1) { 
 			name = substring(title, 0 , title.length-4);
-			saveName = name;
-				
+			saveName = name;	
 		}
-		else { // if multiple files then number them accordingly
+		
+		// if multiple files then number them accordingly
+		else { 
 			saveName = title;
 			saveName = saveName + "_" + i;	
 		}
-		
-		
 		
 		// saving the output as a Tiff
 		saveAs("Tiff",  output + File.separator + saveName +".tif");

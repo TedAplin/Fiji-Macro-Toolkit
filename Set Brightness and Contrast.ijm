@@ -1,7 +1,7 @@
 // **INFO** //
 // version: 09/2025
 // Applying auto brightness and contrast to all relevant files in a folder
-// author: Edward (Ted) Aplin
+// author: Ted (Edward) Aplin
 
 
 
@@ -44,16 +44,17 @@ for (b = 0; b < fileList.length; b++) { // for each file in the list of relevant
 	name=fileList[b];
 	fname_with_path = input + File.separator + fileList[b];
 	
-	// open the file with Bio-formats Importer, with virtual stack on to allow for greater file sizes on less powerful hardware
-	// if there is an issue, you can turn virtual stack off by reming "use_virtual_stack" from the end of the string below
+	// open the file with virtual stack on to allow for greater file sizes on less powerful hardware
 	run("TIFF Virtual Stack...", "open=[" + fname_with_path + "]");
 	print("Analyzing Image " + name);// notifying user
 	
 	run("Brightness/Contrast...");
+	
 	// setting auto brightness and contrast
 	if (Auto == "yes") {
 		run("Enhance Contrast", "saturated=0.35");
 	}
+	
 	// setting manual brightness and contrast
 	else {
 		setMinAndMax(Min, Max);

@@ -1,7 +1,7 @@
 // **INFO** //
 // version: 09/2025
 // loops through files in a directory and creates a scale bar
-// author: Edward (Ted) Aplin
+// author: Ted (Edward) Aplin
 
 
 

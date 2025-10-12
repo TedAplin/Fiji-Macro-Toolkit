@@ -1,7 +1,7 @@
 // **INFO** //
 // version: 09/2025
 // Compresses all files in a folder using 2d or 3d pixel binning
-// author: Edward (Ted) Aplin
+// author: Ted (Edward) Aplin
 
 
 
@@ -38,22 +38,31 @@ if (fileList.length == 0) {
 	exit("no relevant files in input directory");
 }
 
+// Auto mode
 if (Mode == "yes") {
 	for (b = 0; b < fileList.length; b++) {
+		
+		// opening image
 		name=fileList[b];
 		fname_with_path = input + File.separator + fileList[b];
 		run("TIFF Virtual Stack...", "open=[" + fname_with_path + "]");
 		print("Analyzing Image " + name);// notifying user
+		
+		// identifying size of file
 		FileSize = File.length(fname_with_path);
 		
+		// compressing if larger than 4gb
 		if (FileSize > 3950000000) {
+			// compressing further if larger than 16gb
 			if (FileSize > 15900000000) {
 				run("Bin...", "x=3 y=3 z=1 bin=Average");
 			}
+			// standard compression for lower than 16gb
 			else {
 				run("Bin...", "x=2 y=2 z=1 bin=Average");
 			}
 		}
+		// saving
 		title = getTitle();
 		name = substring(title, 0 , title.length-3);
 		saveName = name + "_" + "Under4GB";
@@ -62,15 +71,20 @@ if (Mode == "yes") {
 	}
 }
 
+// Manual mode
 else {
 	for (b = 0; b < fileList.length; b++) {
+		
+		//opening file
 		name=fileList[b];
 		fname_with_path = input + File.separator + fileList[b];
 		open(fname_with_path);
 		print("Analyzing Image " + name);
 		
+		// compressing by user defined parameters
 		run("Bin...", "x=" + XYScale + " y=" + XYScale + " z=" + ZScale + " bin=Average");
 		
+		// saving
 		title = getTitle();
 		name = substring(title, 0 , title.length-3);
 		saveName = name + "_" + "Compressed";

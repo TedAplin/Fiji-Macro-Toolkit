@@ -17,8 +17,6 @@
 #@ String (value = "Max pixel shift is how many pixels the image can move between each frame, I recommend starting at 1 and moving up if the stabilisation is too subtle", visibility="MESSAGE", required=false, persist=false) hint4 // adds text, can be used inbetween inputs too
 #@ int (label = "max pixel shift:") Shift
 
-ADD LITE MODE
-
 //cleanup
 setBatchMode(true);
 close("*");
@@ -69,7 +67,7 @@ for (b = 0; b < fileList.length; b++) { // for each file in the list of relevant
 	// if all suitable then run the program and save the new file
 	else{
 		setBatchMode(true);
-		run("Correct 3D drift", "channel=" + Channel + "multi_time_scale sub_pixel edge_enhance only=0 lowest=1 highest=" + slices + " max_shift_x=" + Shift + " max_shift_y=" + Shift + " max_shift_z=1.000");
+		run("Correct 3D drift", "channel=" + Channel + " multi_time_scale sub_pixel edge_enhance only=0 lowest=1 highest=" + slices + " max_shift_x=" + Shift + " max_shift_y=" + Shift + " max_shift_z=1.000");
 		print("Successfully stabilised Image " + name);
 		selectImage("registered time points");
 		

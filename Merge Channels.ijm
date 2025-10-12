@@ -1,7 +1,7 @@
 // **INFO** //
 // version: 09/2025
 // Combines channels for all TIFF files in a folder
-// author: Edward (Ted) Aplin
+// Author: Ted (Edward) Aplin
 
 
 
@@ -21,6 +21,7 @@
 #@ Integer (label = "magenta:") C6
 #@ Integer (label = "yellow:") C7
 
+// merge the channel information
 Channel = newArray(C1, C2, C3, C4, C5, C6, C7);
 Error = 0;
 
@@ -57,24 +58,36 @@ for (b = 0; b < fileList.length; b++) { // for each file in the list of relevant
 	print("Analyzing Image " + name);// notifying user
 	
 	
-	
 	getDimensions(width, height, channels, slices, frames);
 	
+	// stopping if not a multichannel image
 	if (channels == 1) {
 		print(" ERROR:  only single channel image, not processed");
-		Error = 1;
+		Error = Error + 1;
 	}
+	
 	else{
+		// splitting channels
 		run("Split Channels");
+		
+		// creating structure for writing instruction
 		Command = "";
+		
+		// setting up counting variables
 		Count = 0;
-		//renaming
+		NegCount = 0;
+		
+		// writing merge channel instruction
 		for (i = 0; i < 7; i++) {
 			if (Channel[i] != 0){
+				
+				// checking for out of range channels
 				if (Channel[i] > channels){
 					print(" ERROR:  Channel " + Channel[i] + "out of range, only " + channels + "channels in original file");
-					Error = 1;
+					NegCount = NegCount + 1;
 				}
+				
+				// adding the channel to 
 				else{
 					Temp = "c" + i + "=[C" + Channel[i] + "-" + name + "] ";
 					Command = Command + Temp;
@@ -82,10 +95,20 @@ for (b = 0; b < fileList.length; b++) { // for each file in the list of relevant
 				}
 			}
 		}
+		
+		// sending an Error if it could not be merged
 		if (Command == "") {
 			print(" ERROR:  No correct channels given, channels not merged");
-			Error = 1;
+			Error = Error + 1;
 		}
+		
+		// sending an error if some channels could not be merged
+		else if (NegCount != 0) {
+			print(" ERROR: " + NegCount + " channels were out of range, " + Count + " channels have still been merged");
+			Error = Error + 1;
+		}
+		
+		// if no errors then merge channel
 		else {
 			run("Merge Channels...", Command + "create");
 			saveName = substring(name, 0 , name.length-4) + "_Merge";
@@ -100,9 +123,10 @@ for (b = 0; b < fileList.length; b++) { // for each file in the list of relevant
 }
 
 // telling the user it is complete
-if (Error == 1){
-	showMessage("There is an issue with at least 1 process, check the log");
+if (Error != 0){
+	showMessage("There were " + Error + " errors, please check the log.");
 }
+
 else {
-	showMessage("All successful!");
+	showMessage("'Merge Channels' macro successful!");
 }
