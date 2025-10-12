@@ -1,7 +1,7 @@
 // **INFO** //
 // version: 08/2025
 // Multiple functions for processing images from .tif files or multiple proprietary filetypes
-// author: Ted Aplin (Adapted from Tereza Belinova (IOF), Institute of Science and Technology Austria)
+// author: Ted (Edward) Aplin
 
 
 

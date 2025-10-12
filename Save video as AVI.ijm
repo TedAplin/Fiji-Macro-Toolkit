@@ -1,7 +1,7 @@
 // **INFO** //
 // version: 10/2025
 // Saving every file in a folder as a video in the AVI format
-// author: Edward (Ted) Aplin
+// author: Ted (Edward) Aplin
 
 
 
@@ -38,6 +38,7 @@ if (fileList.length == 0) {
 	exit("no relevant files in input directory");
 }
 
+// setting up count for errors
 TotalError = 0;
 
 //the macro
@@ -54,11 +55,14 @@ for (b = 0; b < fileList.length; b++) { // for each file in the list of relevant
 	
 	error = 0;
 	getDimensions(width, height, channels, slices, frames);
+	
+	// checking if it is a timeseries
 	if (frames == 1){
 		print("only 1 frame so no video made, you can make a photo using the Save as PNG macro")
 		error = 1
 	}
 	
+	// running Z projection
 	if (Zproject == "Yes"){
 		if (slices == 1) {
 			print("no Maximum Projection processed as only 1 slice");
@@ -69,18 +73,24 @@ for (b = 0; b < fileList.length; b++) { // for each file in the list of relevant
 		}
 	}
 	
+	// running auto brightness and contrast
 	if (ABC == "Yes"){
 		run("Brightness/Contrast...");
 		run("Enhance Contrast", "saturated=0.35");
 		print("run auto brightness/ contrast");
 	}
 	
+	// working with multiple channels
 	if (MultiChannel == "Single"){
+		
+		// Checking if the channel is in range
 		if (Channel == 0 || Channel > channels){
 			print(" ERROR: couldn't create video as channel not present");
 			print(" ERROR: entered " + Channel + " but there are only " + channels + " channels present");
 			error = 1;
 		}
+		
+		// selecting the single channel
 		else if (channels > 1) {
 			run("Split Channels");
 			selectImage("C" + Channel + "-" + name);
@@ -88,6 +98,7 @@ for (b = 0; b < fileList.length; b++) { // for each file in the list of relevant
 		}
 	}
 	
+	// if everything worked then save
 	if (error == 0) {
 		savename = substring(name, 0 , name.length-4);
 		outputname = output + File.separator + savename + ".avi";
@@ -95,14 +106,16 @@ for (b = 0; b < fileList.length; b++) { // for each file in the list of relevant
 		print("Video created");
 	}
 	
+	// count up the error if there was a failure
 	if (error == 1) {
 		TotalError = 1;
 	}
 	close("*");
 }
 
-if (TotalError == 1) {
-	showMessage("There was at least 1 issue, check the log");
+// error warning
+if (TotalError != 0) {
+	showMessage(TotalError + " errrors detected, please check the log");
 }
 
 else {

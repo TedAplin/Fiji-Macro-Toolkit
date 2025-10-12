@@ -1,7 +1,7 @@
 // **INFO** //
 // version: 09/2025
 // Template Macro for completing tasks on all relevant files in a folder
-// author: Edward (Ted) Aplin
+// author: Ted (Edward) Aplin
 
 
 
@@ -13,7 +13,7 @@
 #@ File (label = "Select folder to export files to", style="directory") output //defines output directory for exported data
 
 // multiple choice entry
-#@ String (label="make a decision:", choices={"first", "second", "third", "and so on..."}, style="radioButtonHorizontal") extension //defines extension of files to be processed
+#@ String (label="make a decision:", choices={"first", "second", "third", "and so on..."}, style="ListBox") choice //Allows choice out of a set options
 
 // text entry
 #@ String (label = "Enter text here") text // stores text

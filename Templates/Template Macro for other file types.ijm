@@ -1,7 +1,7 @@
 // **INFO** //
 // version: 09/2025
 // Template Macro for completing tasks on all relevant files in a folder
-// author: Edward (Ted) Aplin
+// author: Ted (Edward) Aplin
 
 
 
