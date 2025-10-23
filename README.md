@@ -9,7 +9,7 @@
 -   [Creating your own Macros](#creating-your-own-macros)
     -   [Using the templates: example of brightness and contrast](#using-the-templates:-example-of-brightness-and-contrast)
 
-## About {#about}
+## About
 
 This is a set of ImageJ macros for completing commonly used ImageJ functions on an entire folder of images.
 
@@ -23,7 +23,7 @@ They all work on Windows and Linux, and should work on Mac too, but I have not h
 
 Most of these Macros only work with .tif input files, but there is a macro to convert images from other proprietary formats to .tif and one of the macro templates contains this functionality.
 
-### Macros included {#macros-included}
+### Macros included
 
 1.  Add scale bar.ijm
     -   Adds a scale bar onto TIFF files in folder
@@ -61,7 +61,7 @@ Most of these Macros only work with .tif input files, but there is a macro to co
     -   Runs Z project on all TIFF files
     -   User can select which method to use
 
-## Installation {#installation}
+## Installation
 
 1.  Go to the v1.0 Release (red square on Github Repository)
 
@@ -73,7 +73,7 @@ Most of these Macros only work with .tif input files, but there is a macro to co
 
 3.  Extract the .zip folder to wherever you want the files
 
-## using Macros {#using-macros}
+## using Macros
 
 1.  Drag and drop the macro file onto your ImageJ window:
 
@@ -87,7 +87,7 @@ Most of these Macros only work with .tif input files, but there is a macro to co
 
 ![](images/clipboard-4174230697.png)
 
-## Creating your own Macros {#creating-your-own-macros}
+## Creating your own Macros
 
 In the repository there is a folder called "Templates", this contains files for making your own Macros in the same format as mine, but for different functions. The template contains all the code for working with photos in batch from a folder, then there is a free space for you to put in the function of the macro.
 
