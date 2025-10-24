@@ -1,8 +1,8 @@
-title: TedAplin/Fiji-Macro-Toolkit: v1.0
+title: TedAplin/Fiji-Macro-Toolkit
 abstract: A set of ImageJ Macros for batch image processing
 doi: 10.5281/zenodo.17427716
 repository-code: https://github.com/TedAplin/Fiji-Macro-Toolkit
-version: v1.0
+version: 1.0
 date-released: 2025-10-24
 message: "If you use this software, please cite it as below."
 authors:
