@@ -7,7 +7,7 @@
 -   [Installation](#installation)
 -   [Using Macros](#using-macros)
 -   [Creating your own Macros](#creating-your-own-macros)
-    -   [Using the templates: example of brightness and contrast](#using-the-templates:-example-of-brightness-and-contrast)
+    -   [Using the templates: example of brightness and contrast](#using-the-templates-example-of-brightness-and-contrast)
 
 ## About
 
