@@ -4,11 +4,11 @@ doi: 10.5281/zenodo.17427716
 repository-code: https://github.com/TedAplin/Fiji-Macro-Toolkit
 version: 1.0
 date-released: 2025-10-24
-message: "If you use this software, please cite it as below."
+message: If you use this software, please cite it as below.
 authors:
   - given-names: Edward
     family-names: Aplin
-orcid: https://orcid.org/0009-0003-2175-5365
+    orcid: https://orcid.org/0009-0003-2175-5365
 keywords:
   - ImageJ
   - Bioimaging
