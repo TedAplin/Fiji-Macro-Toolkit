@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 cff-version: "1.2.0"
 message: "If you use this software, please cite it as below."
 title: "TedAplin/Fiji-Macro-Toolkit"
@@ -10,6 +11,19 @@ authors:
   - given-names: "Edward"
     family-names: "Aplin"
     orcid: "https://orcid.org/0009-0003-2175-5365"
+=======
+title: 'TedAplin/Fiji-Macro-Toolkit'
+abstract: A set of ImageJ Macros for batch image processing
+doi: 10.5281/zenodo.17427716
+repository-code: https://github.com/TedAplin/Fiji-Macro-Toolkit
+version: 1.0
+date-released: 2025-10-24
+message: If you use this software, please cite it as below.
+authors:
+  - given-names: Edward
+    family-names: Aplin
+    orcid: https://orcid.org/0009-0003-2175-5365
+>>>>>>> a0f67913013000e02a7f8538a24cddf3086bb1b3
 keywords:
   - "ImageJ"
   - "Bioimaging"
